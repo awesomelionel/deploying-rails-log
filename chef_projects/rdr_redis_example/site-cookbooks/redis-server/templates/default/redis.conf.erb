@@ -1,0 +1,23 @@
+daemonize yes
+pidfile /var/run/redis/redis-server.pid
+logfile /var/log/redis/redis-server.log
+
+port <%= node['redis-server']['port'] %>
+bind <%= node['redis-server']['bind'] %>
+timeout 200
+
+loglevel notice
+databases 16
+
+save 900 1
+save 300 10
+save 60 10000
+
+rdbcompression yes
+dbfilename dump.rdb
+dir /etc/redis/
+appendonly no
+
+<% node['redis-server']['additional_configuration_values'].each do |key, value|%>
+  <%= "#{key} #{value}" %>
+<%end%>

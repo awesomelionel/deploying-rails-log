@@ -1,0 +1,8 @@
+{
+  "run_list": [
+    "recipe[redis-server::default]"
+  ],
+  "automatic": {
+    "ipaddress": "188.166.219.55"
+  }
+}
